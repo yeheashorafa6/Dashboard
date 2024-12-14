@@ -1,90 +1,102 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { GiTeacher } from "react-icons/gi";
+import { PiStudentBold , PiExam } from "react-icons/pi";
+import { RiParentFill } from "react-icons/ri";
+import { MdOutlineSubject , MdPlayLesson , MdAssignment ,MdDriveFileRenameOutline } from "react-icons/md";
+import { SiGoogleclassroom } from "react-icons/si";
+import { FaUserCheck , FaHome  } from "react-icons/fa";
+import { IoCalendarOutline } from "react-icons/io5";
+import { TbMessage2 } from "react-icons/tb";
+import { GrAnnounce } from "react-icons/gr";
+import { CgProfile } from "react-icons/cg";
+import { IoIosSettings , IoIosLogOut  } from "react-icons/io";
+
 const menuItems = [
   {
     title: "MENU",
     items: [
       {
-        icon: "/home.png",
+        icon: <FaHome size={25}/>,
         label: "Home",
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/teacher.png",
+        icon: <GiTeacher size={25}/>,
         label: "Teachers",
         href: "/list/teachers",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/student.png",
+        icon: <PiStudentBold size={25}/>,
         label: "Students",
         href: "/list/students",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/parent.png",
+        icon: <RiParentFill size={25}/>,
         label: "Parents",
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/subject.png",
+        icon: <MdOutlineSubject size={25}/>,
         label: "Subjects",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/class.png",
+        icon: <SiGoogleclassroom size={25}/>,
         label: "Classes",
         href: "/list/classes",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/lesson.png",
+        icon: <MdPlayLesson size={25}/>,
         label: "Lessons",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/exam.png",
+        icon: <PiExam size={25}/>,
         label: "Exams",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assignment.png",
+        icon: <MdAssignment size={25}/>,
         label: "Assignments",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/result.png",
+        icon: <MdDriveFileRenameOutline size={25}/>,
         label: "Results",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/attendance.png",
+        icon: <FaUserCheck size={25}/>,
         label: "Attendance",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/calendar.png",
+        icon: <IoCalendarOutline size={25}/>,
         label: "Events",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/message.png",
+        icon: <TbMessage2 size={25}/>,
         label: "Messages",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/announcement.png",
+        icon: <GrAnnounce size={25}/>,
         label: "Announcements",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
@@ -95,19 +107,19 @@ const menuItems = [
     title: "OTHER",
     items: [
       {
-        icon: "/profile.png",
+        icon: <CgProfile size={25}/>,
         label: "Profile",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/setting.png",
+        icon: <IoIosSettings size={25}/>,
         label: "Settings",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/logout.png",
+        icon: <IoIosLogOut size={25}/>,
         label: "Logout",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
@@ -118,20 +130,15 @@ const menuItems = [
 
 function Menu() {
   return (
-    <div className="mt-4 text-sm">
+    <div className="mt-4 text-sm md:text-md">
       {menuItems.map((item, index) => (
         <div key={index} className="flex flex-col gap-2">
-          <span className="font-medium text-gray-400 my-4">{item.title}</span>
+          <span className="font-medium text-gray-500 my-4">{item.title}</span>
           <div>
               {item.items.map((subItem, subIndex) => (
-                  <Link href={subItem.href} key={subIndex} className="flex items-center justify-center lg:justify-start text-gray-500 gap-4 ">
-                    <Image
-                      src={subItem.icon}
-                      width={20}
-                      height={20}
-                      alt="menus"
-                    />
-                    <span>{subItem.label}</span>
+                  <Link href={subItem.href} key={subIndex} className="flex items-center justify-center lg:justify-start text-gray-500 py-2 gap-4 ">
+                    <span className="text-[#fae27c]">{subItem.icon}</span>
+                    <span className="text-gray-700 my-2 hidden lg:block">{subItem.label}</span>
                   </Link>
               ))}
           </div>
