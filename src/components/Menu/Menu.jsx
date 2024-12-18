@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { GiTeacher } from "react-icons/gi";
@@ -12,6 +11,7 @@ import { TbMessage2 } from "react-icons/tb";
 import { GrAnnounce } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { IoIosSettings , IoIosLogOut  } from "react-icons/io";
+import { role } from "@/lib/data";
 
 const menuItems = [
   {
@@ -135,12 +135,17 @@ function Menu() {
         <div key={index} className="flex flex-col gap-2">
           <span className="font-medium text-gray-500 my-4">{item.title}</span>
           <div>
-              {item.items.map((subItem, subIndex) => (
-                  <Link href={subItem.href} key={subIndex} className="flex items-center justify-center lg:justify-start text-gray-500 py-2 gap-4 ">
-                    <span className="text-[#fae27c]">{subItem.icon}</span>
-                    <span className="text-gray-700 my-2 hidden lg:block">{subItem.label}</span>
-                  </Link>
-              ))}
+              {item.items.map((subItem, subIndex) => {
+                if (subItem.visible.includes(role)) {
+                  return (
+                      <Link href={subItem.href} key={subIndex} className="flex items-center justify-center lg:justify-start text-gray-500 py-2 md:px-2 gap-4 rounded-md hover:bg-skyight">
+                        <span className="text-[#fae27c]">{subItem.icon}</span>
+                        <span className="text-gray-700 my-2 hidden lg:block">{subItem.label}</span>
+                      </Link>
+                    
+                  )
+                }
+                })}
           </div>
         </div>
       ))}

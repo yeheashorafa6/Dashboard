@@ -8,8 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primaryPurple: "#CFCEFF",
+        primaryPurpleLight: "#F1F0FF",
+        secondaryYellow: "#FAE27C",
+        secondaryYellowLight: "#FEFCE8",
+        sky: "#C3EBFA",
+        skyight: "#EDF9FD",
       },
     },
   },
