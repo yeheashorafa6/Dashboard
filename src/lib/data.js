@@ -2,6 +2,11 @@
 
 export let role = "admin";
 
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth();
+const currentDate = today.getDate();
+
 export const teachersData = [
   {
     id: 1,
@@ -921,143 +926,143 @@ export const calendarEvents = [
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 12, 8, 0),
-    end: new Date(2024, 7, 12, 8, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 8, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 12, 9, 0),
-    end: new Date(2024, 7, 12, 9, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 9, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 12, 10, 0),
-    end: new Date(2024, 7, 12, 10, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 10, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 12, 11, 0),
-    end: new Date(2024, 7, 12, 11, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 11, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 12, 13, 0),
-    end: new Date(2024, 7, 12, 13, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 13, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 12, 14, 0),
-    end: new Date(2024, 7, 12, 14, 45),
+    start: new Date(currentYear, currentMonth, currentDate, 14, 0),
+    end: new Date(currentYear, currentMonth, currentDate, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 13, 9, 0),
-    end: new Date(2024, 7, 13, 9, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 9, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 13, 10, 0),
-    end: new Date(2024, 7, 13, 10, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 10, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 13, 11, 0),
-    end: new Date(2024, 7, 13, 11, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 11, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 11, 45),
   },
 
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 13, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 14, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 14, 8, 0),
-    end: new Date(2024, 7, 14, 8, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 8, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 8, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 14, 10, 0),
-    end: new Date(2024, 7, 14, 10, 45),
+    start: new Date(currentYear, currentMonth, currentDate+2, 10, 0),
+    end: new Date(currentYear, currentMonth, currentDate+2, 10, 45),
   },
 
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 14, 13, 0),
-    end: new Date(2024, 7, 14, 13, 45),
+    start: new Date(currentYear, currentMonth, currentDate+1, 13, 0),
+    end: new Date(currentYear, currentMonth, currentDate+1, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 14, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start: new Date(currentYear, currentMonth, currentDate+2, 14, 0),
+    end: new Date(currentYear, currentMonth, currentDate+2, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 15, 9, 0),
-    end: new Date(2024, 7, 15, 9, 45),
+    start: new Date(currentYear, currentMonth, currentDate+2, 9, 0),
+    end: new Date(currentYear, currentMonth, currentDate+2, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 15, 10, 0),
-    end: new Date(2024, 7, 15, 10, 45),
+    start: new Date(currentYear, currentMonth, currentDate+3, 10, 0),
+    end: new Date(currentYear, currentMonth, currentDate+3, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 15, 11, 0),
-    end: new Date(2024, 7, 15, 11, 45),
+    start: new Date(currentYear, currentMonth, currentDate+2, 11, 0),
+    end: new Date(currentYear, currentMonth, currentDate+2, 11, 45),
   },
 
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 15, 14, 0),
-    end: new Date(2024, 7, 15, 14, 45),
+    start: new Date(currentYear, currentMonth, currentDate+2, 14, 0),
+    end: new Date(currentYear, currentMonth, currentDate+2, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 16, 8, 0),
-    end: new Date(2024, 7, 16, 8, 45),
+    start: new Date(currentYear, currentMonth, currentDate+3, 8, 0),
+    end: new Date(currentYear, currentMonth, currentDate+3, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 16, 9, 0),
-    end: new Date(2024, 7, 16, 9, 45),
+    start: new Date(currentYear, currentMonth, currentDate+3, 9, 0),
+    end: new Date(currentYear, currentMonth, currentDate+3, 9, 45),
   },
 
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 16, 11, 0),
-    end: new Date(2024, 7, 16, 11, 45),
+    start: new Date(currentYear, currentMonth, currentDate+4, 11, 0),
+    end: new Date(currentYear, currentMonth, currentDate+4, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 16, 13, 0),
-    end: new Date(2024, 7, 16, 13, 45),
+    start: new Date(currentYear, currentMonth, currentDate+4, 13, 0),
+    end: new Date(currentYear, currentMonth, currentDate+4, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 16, 14, 0),
-    end: new Date(2024, 7, 16, 14, 45),
+    start: new Date(currentYear, currentMonth, currentDate+4, 14, 0),
+    end: new Date(currentYear, currentMonth, currentDate+4, 14, 45),
   },
 ];
