@@ -3,7 +3,7 @@ import React from 'react'
 function StudentsListPage() {
   return (
     <div>
-      StudentsListPage
+      Student List Page
     </div>
   )
 }
