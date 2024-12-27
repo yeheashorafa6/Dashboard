@@ -14,7 +14,7 @@ import { role, teachersData } from '@/lib/data';
 const data = [
  {
   id : Number, 
-  teacherid : String ,
+  teacherId : String ,
   name : String,
   email :String ,
   photo : String,
@@ -32,7 +32,7 @@ const data = [
   },
   {
     header : "Teacher ID",
-    accessor : "Teacherid",
+    accessor : "TeacherId",
     className : "hidden md:table-cell"
   },
   {
@@ -73,7 +73,7 @@ function TeachersListPage() {
           <p className='text-xs text-gray-500'>{item?.email}</p>
         </div>
       </td>
-      <td className='hidden md:table-cell'>{item.teacherid}</td>
+      <td className='hidden md:table-cell'>{item.teacherId}</td>
       <td className='hidden md:table-cell'>{item.phone}</td>
       <td className='hidden md:table-cell'>
           {Array.isArray(item.subjects) ? item.subjects.join(", ") : item.subjects || "N/A"}
@@ -85,13 +85,13 @@ function TeachersListPage() {
       <td>
         <div className='flex items-center gap-2'>
           <Link href={`List/Teacher/${item.id}`}>
-            <button className='w-7 h-7 flex items-center justify-center rounded-full bg-sky'>
-              <PiEyeLight size={16} className='text-emerald-800 '/>
+            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-sky'>
+              <PiEyeLight size={17} className='text-emerald-800 '/>
             </button>
           </Link>
           { role === "admin" &&
-            <button className='w-7 h-7 flex items-center justify-center rounded-full bg-primaryPurple'>
-              <AiOutlineDelete size={16} className='text-red-600'/>
+            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-primaryPurple'>
+              <AiOutlineDelete size={17} className='text-red-600'/>
             </button>
           }
         </div>
@@ -103,7 +103,7 @@ function TeachersListPage() {
     <div className='bg-white rounded-md p-4 m-4 mt-2 '>
       {/* TOP */ }
       <div className='flex justify-between items-center'>
-        <h1 className='hidden md:block  text-lg font-semibold'>All Teacher</h1>
+        <h1 className='hidden md:block  text-lg font-semibold'>All Teachers</h1>
         <div className='flex flex-col md:flex-row items-center justify-center gap-3 w-full md:w-auto'>
           {/* SEARCH BAR */}
           <TableSearch/>
@@ -115,9 +115,11 @@ function TeachersListPage() {
             <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
               <BsSortDown size={17}/>
             </button>
-            <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
+            {
+              role === "admin" &&
+              <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
               <GoPlus size={17}/>
-            </button>
+            </button>}
           </div>
         </div>
       </div>
