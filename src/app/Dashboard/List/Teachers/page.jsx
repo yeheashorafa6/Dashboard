@@ -84,7 +84,7 @@ function TeachersListPage() {
       <td className='hidden md:table-cell'>{item.address}</td>
       <td>
         <div className='flex items-center gap-2'>
-          <Link href={`List/Teacher/${item.id}`}>
+          <Link href={`Teachers/${item.id}`}>
             <button className='w-8 h-8 flex items-center justify-center rounded-full bg-sky'>
               <PiEyeLight size={17} className='text-emerald-800 '/>
             </button>
