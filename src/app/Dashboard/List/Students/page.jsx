@@ -1,5 +1,4 @@
 import React from 'react'
-import { GoPlus} from 'react-icons/go'
 import { GiSettingsKnobs } from "react-icons/gi";
 import { BsSortDown } from "react-icons/bs";
 import TableSearch from '@/components/TableSearch/TableSearch';
@@ -7,9 +6,9 @@ import Pagination from '@/components/Pagination/Pagination';
 import Table from '@/components/Table/Table';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PiEyeLight } from "react-icons/pi";
-import { AiOutlineDelete } from "react-icons/ai";
 import { role, studentsData } from '@/lib/data';
+import FormModal from '@/components/FormModal/FormModal';
+import { PiEyeLight } from 'react-icons/pi';
 
 const data = [
  {
@@ -83,9 +82,10 @@ function StudentsListPage() {
             </button>
           </Link>
           { role === "admin" &&
-            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-primaryPurple'>
-              <AiOutlineDelete size={17} className='text-red-600'/>
-            </button>
+            // <button className='w-8 h-8 flex items-center justify-center rounded-full bg-primaryPurple'>
+            //   <AiOutlineDelete size={17} className='text-red-600'/>
+            // </button>
+            <FormModal table={"student"} type={"delete"} id={item.id}/>
           }
         </div>
       </td>
@@ -109,9 +109,11 @@ function StudentsListPage() {
               <BsSortDown size={17}/>
             </button>
             { role === "admin" && 
-            <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
-              <GoPlus size={17}/>
-            </button>}
+            // <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
+            //   <GoPlus size={17}/>
+            // </button>
+            <FormModal table={"student"} type={"create"}/>
+            }
           </div>
         </div>
       </div>

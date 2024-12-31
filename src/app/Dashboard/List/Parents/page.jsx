@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { AiOutlineDelete } from "react-icons/ai";
 import { parentsData, role } from '@/lib/data';
 import { FiEdit } from 'react-icons/fi';
+import FormModal from '@/components/FormModal/FormModal';
 
 const data = [
  {
@@ -65,15 +66,11 @@ function ParentListPage() {
       <td className='hidden md:table-cell'>{item.address}</td>
       <td>
       <div className='flex items-center gap-2'>
-          <Link href={`List/Teacher/${item.id}`}>
-            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-sky'>
-              <FiEdit size={17} className='text-teal-900 '/>
-            </button>
-          </Link>
           { role === "admin" &&
-            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-primaryPurple'>
-              <AiOutlineDelete size={17} className='text-red-600'/>
-            </button>
+          <>
+            <FormModal table={"parent"} type={"update"} data={item}/>
+            <FormModal table={"parent"} type={"delete"} id={item.id}/>
+          </>
           }
         </div>
       </td>
@@ -98,9 +95,8 @@ function ParentListPage() {
             </button>
             {
               role === "admin" &&
-              <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
-              <GoPlus size={17}/>
-            </button>}
+              <FormModal table={"parent"} type={"create"}/>
+             }
           </div>
         </div>
       </div>

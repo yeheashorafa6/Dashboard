@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { AiOutlineDelete } from "react-icons/ai";
 import { role, subjectsData } from '@/lib/data';
 import { FiEdit } from 'react-icons/fi';
+import FormModal from '@/components/FormModal/FormModal';
 
 const data = [
  {
@@ -47,15 +48,11 @@ function SubjectsListPage() {
       </td>
       <td>
       <div className='flex items-center gap-2'>
-          <Link href={`List/Teacher/${item.id}`}>
-            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-sky'>
-              <FiEdit size={17} className='text-teal-900 '/>
-            </button>
-          </Link>
-          { role === "admin" &&
-            <button className='w-8 h-8 flex items-center justify-center rounded-full bg-primaryPurple'>
-              <AiOutlineDelete size={17} className='text-red-600'/>
-            </button>
+      { role === "admin" &&
+          <>
+            <FormModal table={"subject"} type={"update"} data={item}/>
+            <FormModal table={"subject"} type={"delete"} id={item.id}/>
+          </>
           }
         </div>
       </td>
@@ -79,9 +76,8 @@ function SubjectsListPage() {
               <BsSortDown size={17}/>
             </button>
             { role === "admin" && 
-            <button className=' rounded-full flex justify-center items-center cursor-pointer bg-secondaryYellow p-2 text-black'>
-              <GoPlus size={17}/>
-            </button>}
+              <FormModal table={"subject"} type={"create"} />
+            }
           </div>
         </div>
       </div>
