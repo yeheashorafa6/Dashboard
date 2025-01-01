@@ -5,8 +5,6 @@ import { GoPlus } from "react-icons/go";
 import { IoCloseSharp } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
 import dynamic from "next/dynamic";
-// import TeacherForm from "../Forms/TeacherForm/TeacherForm";
-// import StudentForm from "../Forms/StudentForm/StudentForm";
 
 const TeacherForm = dynamic(() => import("../Forms/TeacherForm/TeacherForm"),{
   loading : () => <h1>Loading...</h1>
@@ -15,14 +13,18 @@ const TeacherForm = dynamic(() => import("../Forms/TeacherForm/TeacherForm"),{
 const StudentForm = dynamic(() => import("../Forms/StudentForm/StudentForm"),{
   loading : () => <h1>Loading...</h1>
 })
+const ParentForm = dynamic(() => import("../Forms/ParentForm/ParentForm"),{
+  loading : () => <h1>Loading...</h1>
+})
 
 
 const forms = {
   teacher: (type, data) => <TeacherForm type={type} data={data} />,
   student: (type, data) => <StudentForm type={type} data={data} />,
+  parent: (type, data) => <ParentForm type={type} data={data} />,
 };
 function FormModal({ table, type, data, id }) {
-  console.log(data)
+  // console.log(data)
   const [open, setOpen] = useState(false);
 
   const bgColor =

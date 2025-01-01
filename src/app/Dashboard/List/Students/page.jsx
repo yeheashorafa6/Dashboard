@@ -68,8 +68,8 @@ function StudentsListPage() {
         </div>
       </td>
       <td className='hidden md:table-cell'>{item.studentId}</td>
-      <td className='hidden md:table-cell'>{item.phone}</td>
       <td className='hidden md:table-cell'>{item.grade}</td>
+      <td className='hidden md:table-cell'>{item.phone}</td>
       {/* <td className='hidden md:table-cell'>
       {Array.isArray(item.classes) ? item.classes.join(", ") : item.classes || "N/A"}
       </td> */}
