@@ -4,7 +4,7 @@ import { BsSortDown } from "react-icons/bs";
 import TableSearch from '@/components/TableSearch/TableSearch';
 import Pagination from '@/components/Pagination/Pagination';
 import Table from '@/components/Table/Table';
-import { classesData, role } from '@/lib/data';
+import { role } from '@/lib/data';
 import FormModal from '@/components/FormModal/FormModal';
 import {prisma} from '@/lib/prisma';
 import { ITEM_PER_PAGE } from '@/lib/setting';

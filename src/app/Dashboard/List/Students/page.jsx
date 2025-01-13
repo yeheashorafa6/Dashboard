@@ -6,7 +6,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import Table from '@/components/Table/Table';
 import Image from 'next/image';
 import Link from 'next/link';
-import { role, studentsData } from '@/lib/data';
+import { role } from '@/lib/data';
 import FormModal from '@/components/FormModal/FormModal';
 import { PiEyeLight } from 'react-icons/pi';
 import { prisma } from "@/lib/prisma";
