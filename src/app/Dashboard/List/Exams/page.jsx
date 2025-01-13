@@ -1,25 +1,14 @@
 import React from 'react'
-import { GoPlus} from 'react-icons/go'
 import { GiSettingsKnobs } from "react-icons/gi";
 import { BsSortDown } from "react-icons/bs";
 import TableSearch from '@/components/TableSearch/TableSearch';
 import Pagination from '@/components/Pagination/Pagination';
 import Table from '@/components/Table/Table';
-import Link from 'next/link';
-import { AiOutlineDelete } from "react-icons/ai";
-import { examsData, role } from '@/lib/data';
-import { FiEdit } from "react-icons/fi";
+import { role } from '@/lib/data';
 import FormModal from '@/components/FormModal/FormModal';
+import { prisma } from '@/lib/prisma';
+import { ITEM_PER_PAGE } from '@/lib/setting';
 
-const data = [
- {
-  id : Number, 
-  subject : String,
-  class : String,
-  teacher : String,
-  date : String,
- }
-]
 
  const columns = [
   {
@@ -47,16 +36,15 @@ const data = [
 ]
 
 
-function ExamsListPage() {
 
   const renderRow = (item)=>(
     <tr key={item.id} className='border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-skyight'>
       <td className='flex items-center p-4'>
-          <h2 className=''>{item.subject}</h2>
+          <h2 className=''>{item.lesson.subject.name}</h2>
       </td>
-      <td className='hidden md:table-cell'>{item.class}</td>
-      <td className='hidden md:table-cell'>{item.teacher}</td>
-      <td className='hidden md:table-cell'>{item.date}</td>
+      <td className='hidden md:table-cell'>{item.lesson.class.name}</td>
+      <td className='hidden md:table-cell'>{item.lesson.teacher.name + " " + item.lesson.teacher.surname}</td>
+      <td className='hidden md:table-cell'>{new Intl.DateTimeFormat("en-US").format(item.startTime)}</td>
       <td>
         <div className='flex items-center gap-2'>
         { role === "admin" &&
@@ -70,6 +58,64 @@ function ExamsListPage() {
 
     </tr>
   )
+async function ExamsListPage({searchParams}) {
+  const {page , ...queryParams} = searchParams;
+  const p = page ? parseInt(page) :  1;
+  const query = {};
+
+  if(queryParams){
+    for (const [key, value] of Object.entries(queryParams)) {
+      if (value !== undefined) {
+        switch (key) {
+          case "classId":
+            if (!query.lesson) {
+              query.lesson = {};
+            }
+            query.lesson.classId = parseInt(value);
+            break;
+          case "teacherId":
+            if (!query.lesson) {
+              query.lesson = {};
+            }
+            query.lesson.teacherId = value;
+            break;
+          case "search":
+            const lowerCaseValue = value.toLowerCase();
+            if (!query.lesson) {
+              query.lesson = {};
+            }
+            query.lesson.subject = {
+              name: { contains: lowerCaseValue },
+            };
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    
+  }
+  const [data , count ] = await prisma.$transaction([
+    prisma.exam.findMany({
+      where:query,
+     include : {
+      lesson:{
+        select : {
+          teacher : {select : {name : true , surname : true}},
+          class : {select : {name : true }},
+          subject : {select : {name : true }},
+        }
+      }
+     },
+     take : ITEM_PER_PAGE,
+     skip : (p - 1) * ITEM_PER_PAGE, 
+   }),
+   prisma.exam.count({
+    where: query
+  })
+
+  ])
+  console.log(data)
   return (
     <div className='bg-white rounded-md p-4 m-4 mt-2 '>
       {/* TOP */ }
@@ -94,11 +140,11 @@ function ExamsListPage() {
       </div>
       {/* LIST */}
       <div>
-        <Table columns={columns} renderRow={renderRow} data={examsData}/>
+        <Table columns={columns} renderRow={renderRow} data={data}/>
       </div>
       {/* PAGINATION */}
       <div>
-        <Pagination/>
+        <Pagination page={p} count={count}/>
       </div>
     </div>
   )

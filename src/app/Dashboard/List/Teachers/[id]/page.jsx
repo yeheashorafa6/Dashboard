@@ -127,11 +127,11 @@ function SingleTeacherPage() {
         <div className="bg-white p-2 rounded-md">
           <h1 className="text-xl font-semibold">Shortcuts</h1>
           <div className="text-gray-700 rounded-lg text-sm p-4 flex gap-4 flex-wrap mt-4">
-            <Link className="p-3 bg-sky rounded-md" href={"/"}>Teacher&apos;s Classes</Link>
-            <Link className="p-3 bg-skyight rounded-md" href={"/"}>Teacher&apos;s Students</Link>
-            <Link className="p-3 bg-primaryPurple rounded-md" href={"/"}>Teacher&apos;s Lseeons</Link>
-            <Link className="p-3 bg-secondaryYellow rounded-md" href={"/"}>Teacher&apos;s Exams</Link>
-            <Link className="p-3 bg-primaryPurpleLight rounded-md" href={"/"}>Teacher&apos;s Assignments</Link>
+            <Link className="p-3 bg-sky rounded-md" href={`/Dashboard/List/Classes?supervisorId=${"teacher2"}`}>Teacher&apos;s Classes</Link>
+            <Link className="p-3 bg-skyight rounded-md" href={`/Dashboard/List/Students?teacherId=${"teacher2"}`}>Teacher&apos;s Students</Link>
+            <Link className="p-3 bg-primaryPurple rounded-md" href={`/Dashboard/List/Lessons?teacherId=${"teacher2"}`}>Teacher&apos;s Lseeons</Link>
+            <Link className="p-3 bg-secondaryYellow rounded-md" href={`/Dashboard/List/Exams?teacherId=${"teacher3"}`}>Teacher&apos;s Exams</Link>
+            <Link className="p-3 bg-primaryPurpleLight rounded-md" href={`/Dashboard/List/Assignments?teacherId=${"teacher2"}`}>Teacher&apos;s Assignments</Link>
           </div>
         </div>
         {/* PERFORMANCE */}

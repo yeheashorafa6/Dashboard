@@ -1,26 +1,13 @@
 import React from "react";
-import { GoPlus } from "react-icons/go";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { BsSortDown } from "react-icons/bs";
 import TableSearch from "@/components/TableSearch/TableSearch";
 import Pagination from "@/components/Pagination/Pagination";
 import Table from "@/components/Table/Table";
-import Link from "next/link";
-import { AiOutlineDelete } from "react-icons/ai";
-import { eventsData, role } from "@/lib/data";
-import { FiEdit } from "react-icons/fi";
+import { role } from "@/lib/data";
 import FormModal from "@/components/FormModal/FormModal";
-
-const data = [
-  {
-    id: Number,
-    title: String,
-    class: String,
-    date: String,
-    startTime: String,
-    endTime: String,
-  },
-];
+import { ITEM_PER_PAGE } from "@/lib/setting";
+import { prisma } from "@/lib/prisma";
 
 const columns = [
   {
@@ -52,31 +39,71 @@ const columns = [
   },
 ];
 
-function EventsListPage() {
-  const renderRow = (item) => (
-    <tr
-      key={item.id}
-      className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-skyight"
-    >
-      <td className="flex items-center p-4">
-        <h2 className="">{item.title}</h2>
-      </td>
-      <td>{item.class}</td>
-      <td className="hidden md:table-cell">{item.date}</td>
-      <td className="hidden md:table-cell">{item.startTime}</td>
-      <td className="hidden md:table-cell">{item.endTime}</td>
-      <td>
-        <div className="flex items-center gap-2">
-          {role === "admin" && (
-            <>
-              <FormModal table={"event"} type={"update"} data={item} />
-              <FormModal table={"event"} type={"delete"} id={item.id} />
-            </>
-          )}
-        </div>
-      </td>
-    </tr>
-  );
+const renderRow = (item) => (
+  <tr
+    key={item.id}
+    className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-skyight"
+  >
+    <td className="flex items-center p-4">
+      <h2 className="">{item.title}</h2>
+    </td>
+    <td>{item.class.name}</td>
+    <td className="hidden md:table-cell"> {new Intl.DateTimeFormat("en-US").format(item.startTime)}</td>
+    <td className="hidden md:table-cell">{item.startTime.toLocaleTimeString("en-US" , {
+      hour : "2-digit",
+      minute : "2-digit",
+      hour12 : false
+    })}</td>
+    <td className="hidden md:table-cell">{item.endTime.toLocaleTimeString("en-US" , {
+      hour : "2-digit",
+      minute : "2-digit",
+      hour12 : false
+    })}</td>
+    <td>
+      <div className="flex items-center gap-2">
+        {role === "admin" && (
+          <>
+            <FormModal table={"event"} type={"update"} data={item} />
+            <FormModal table={"event"} type={"delete"} id={item.id} />
+          </>
+        )}
+      </div>
+    </td>
+  </tr>
+);
+async function EventsListPage({ searchParams }) {
+  const { page, ...queryParams } = searchParams;
+  const p = page ? parseInt(page) : 1;
+  const query = {};
+
+  if (queryParams) {
+    for (const [key, value] of Object.entries(queryParams)) {
+      if (value !== undefined) {
+        switch (key) {
+          case "search":
+            const lowerCaseValue = value.toLowerCase();
+            query.title = { contains: lowerCaseValue };
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+  const [data, count] = await prisma.$transaction([
+    prisma.event.findMany({
+      where: query,
+      include: {
+        class: true,
+      },
+      take: ITEM_PER_PAGE,
+      skip: (p - 1) * ITEM_PER_PAGE,
+    }),
+    prisma.event.count({
+      where: query,
+    }),
+  ]);
+  // console.log(data);
   return (
     <div className="bg-white rounded-md p-4 m-4 mt-2 ">
       {/* TOP */}
@@ -99,11 +126,11 @@ function EventsListPage() {
       </div>
       {/* LIST */}
       <div>
-        <Table columns={columns} renderRow={renderRow} data={eventsData} />
+        <Table columns={columns} renderRow={renderRow} data={data} />
       </div>
       {/* PAGINATION */}
       <div>
-        <Pagination />
+        <Pagination page={p} count={count}/>
       </div>
     </div>
   );

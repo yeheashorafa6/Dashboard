@@ -105,11 +105,11 @@ function SingleStudentPage() {
         <div className="bg-white p-2 rounded-md">
           <h1 className="text-xl font-semibold">Shortcuts</h1>
           <div className="text-gray-700 rounded-lg text-sm p-4 flex gap-4 flex-wrap mt-4">
-            <Link className="p-3 bg-sky rounded-md" href={"/"}>Student&apos;s Lseeons</Link>
-            <Link className="p-3 bg-skyight rounded-md" href={"/"}>Student&apos;s Teachers</Link>
-            <Link className="p-3 bg-primaryPurple rounded-md" href={"/"}>Student&apos;s Results</Link>
-            <Link className="p-3 bg-secondaryYellow rounded-md" href={"/"}>Student&apos;s Exams</Link>
-            <Link className="p-3 bg-primaryPurpleLight rounded-md" href={"/"}>Student&apos;s Assignments</Link>
+            <Link className="p-3 bg-sky rounded-md" href={`/Dashboard/List/Lessons?classId=${2}`}>Student&apos;s Lseeons</Link>
+            <Link className="p-3 bg-skyight rounded-md" href={`/Dashboard/List/Teachers?classId=${2}`}>Student&apos;s Teachers</Link>
+            <Link className="p-3 bg-primaryPurple rounded-md" href={`/Dashboard/List/Results?studentId=${"student2"}`}>Student&apos;s Results</Link>
+            <Link className="p-3 bg-secondaryYellow rounded-md" href={`/Dashboard/List/Exams?classId=${2}`}>Student&apos;s Exams</Link>
+            <Link className="p-3 bg-primaryPurpleLight rounded-md" href={`/Dashboard/List/Assignments?classId=${2}`}>Student&apos;s Assignments</Link>
           </div>
         </div>
         {/* PERFORMANCE */}
