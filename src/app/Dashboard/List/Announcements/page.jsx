@@ -1,14 +1,10 @@
 import React from "react";
-import { GoPlus } from "react-icons/go";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { BsSortDown } from "react-icons/bs";
 import TableSearch from "@/components/TableSearch/TableSearch";
 import Pagination from "@/components/Pagination/Pagination";
 import Table from "@/components/Table/Table";
-import Link from "next/link";
-import { AiOutlineDelete } from "react-icons/ai";
-import { announcementsData, role } from "@/lib/data";
-import { FiEdit } from "react-icons/fi";
+import { role } from "@/lib/data";
 import FormModal from "@/components/FormModal/FormModal";
 import { prisma } from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
