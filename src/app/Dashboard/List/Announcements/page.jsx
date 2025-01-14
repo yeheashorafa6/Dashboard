@@ -1,57 +1,57 @@
 import React from "react";
-import { GiSettingsKnobs } from "react-icons/gi";
-import { BsSortDown } from "react-icons/bs";
-import TableSearch from "@/components/TableSearch/TableSearch";
-import Pagination from "@/components/Pagination/Pagination";
-import Table from "@/components/Table/Table";
-import { role } from "@/lib/data";
-import FormModal from "@/components/FormModal/FormModal";
-import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/setting";
+// import { GiSettingsKnobs } from "react-icons/gi";
+// import { BsSortDown } from "react-icons/bs";
+// import TableSearch from "@/components/TableSearch/TableSearch";
+// import Pagination from "@/components/Pagination/Pagination";
+// import Table from "@/components/Table/Table";
+// import { role } from "@/lib/data";
+// import FormModal from "@/components/FormModal/FormModal";
+// import { prisma } from "@/lib/prisma";
+// import { ITEM_PER_PAGE } from "@/lib/setting";
 
 
-const columns = [
-  {
-    header: "Title",
-    accessor: "title",
-  },
-  {
-    header: "Class",
-    accessor: "class",
-  },
-  {
-    header: "Date",
-    accessor: "date",
-    className: "hidden md:table-cell",
-  },
-  {
-    header: "Actions",
-    accessor: "actions",
-  },
-];
+// const columns = [
+//   {
+//     header: "Title",
+//     accessor: "title",
+//   },
+//   {
+//     header: "Class",
+//     accessor: "class",
+//   },
+//   {
+//     header: "Date",
+//     accessor: "date",
+//     className: "hidden md:table-cell",
+//   },
+//   {
+//     header: "Actions",
+//     accessor: "actions",
+//   },
+// ];
 
-const renderRow = (item) => (
-  <tr
-    key={item.id}
-    className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-skyight"
-  >
-    <td className="flex items-center p-4">
-      <h2 className="">{item.title}</h2>
-    </td>
-    <td className="">{item.class.name}</td>
-    <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.date)}</td>
-    <td>
-      <div className="flex items-center gap-2">
-        {role === "admin" && (
-          <>
-            <FormModal table={"announcement"} type={"update"} data={item} />
-            <FormModal table={"announcement"} type={"delete"} id={item.id} />
-          </>
-        )}
-      </div>
-    </td>
-  </tr>
-);
+// const renderRow = (item) => (
+//   <tr
+//     key={item.id}
+//     className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-skyight"
+//   >
+//     <td className="flex items-center p-4">
+//       <h2 className="">{item.title}</h2>
+//     </td>
+//     <td className="">{item.class.name}</td>
+//     <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.date)}</td>
+//     <td>
+//       <div className="flex items-center gap-2">
+//         {role === "admin" && (
+//           <>
+//             <FormModal table={"announcement"} type={"update"} data={item} />
+//             <FormModal table={"announcement"} type={"delete"} id={item.id} />
+//           </>
+//         )}
+//       </div>
+//     </td>
+//   </tr>
+// );
 async function AnnouncementsListPage({ searchParams }) {
   // const { page, ...queryParams } = searchParams;
   // const p = page ? parseInt(page) : 1;
