@@ -3,7 +3,7 @@ import BigCalender from '@/components/BigCalender/BigCalender'
 import EventCalender from '@/components/EventCalender/EventCalender'
 import React from 'react'
 
-function StudentsPage() {
+function StudentPage() {
   return (
     <div className='flex flex-col xl:flex-row gap-4 p-4'>
       {/* LEFT */}
@@ -24,4 +24,4 @@ function StudentsPage() {
   )
 }
 
-export default StudentsPage
+export default StudentPage

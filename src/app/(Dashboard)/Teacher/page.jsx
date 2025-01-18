@@ -2,7 +2,7 @@ import Announcements from '@/components/Announcements/Announcements'
 import BigCalender from '@/components/BigCalender/BigCalender'
 import React from 'react'
 
-function Teacherspage() {
+function Teacherpage() {
   return (
     <div className='flex-1 flex flex-col xl:flex-row gap-4 p-4'>
       {/* LEFT */}
@@ -21,4 +21,4 @@ function Teacherspage() {
   )
 }
 
-export default Teacherspage
+export default Teacherpage

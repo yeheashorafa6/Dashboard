@@ -1,9 +1,8 @@
 import React from 'react'
 import { GoSearch } from "react-icons/go";
 import { AiOutlineMessage } from "react-icons/ai";
-
 import { TfiAnnouncement } from "react-icons/tfi";
-import { FaUserCircle } from "react-icons/fa";
+import { UserButton } from '@clerk/nextjs';
 
 function Navbar() {
   return (
@@ -26,7 +25,7 @@ function Navbar() {
           <span className='text-sx leading-3 font-medium'>Yehea Shorafa</span>
           <span className='text-right text-[10px] text-gray-400'>Admin</span>
         </div>
-        <FaUserCircle size={30}/>
+        <div> <UserButton/> </div>
       </div>
     </div>
   )

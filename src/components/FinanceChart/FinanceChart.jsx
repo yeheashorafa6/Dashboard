@@ -36,7 +36,7 @@ const data = [
   },
   {
     name: 'Jul',
-    income: 3490,
+    income: 5490,
     expense: 4300,
   },
   {
@@ -46,7 +46,7 @@ const data = [
   },
   {
     name: 'Sep',
-    income: 3490,
+    income: 4590,
     expense: 4300,
   },
   {
@@ -61,7 +61,7 @@ const data = [
   },
   {
     name: 'Des',
-    income: 3490,
+    income: 6490,
     expense: 4300,
   },
 ];
